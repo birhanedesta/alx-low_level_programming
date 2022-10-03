@@ -2,28 +2,26 @@
 #include "main.h"
 
 /**
-* *create_array - creates an array of chars,
-* and initializes it with a specific char
-* @size: size of the array to create
-* @c: char to initialize the array c
-* Return: pointer to the array (Success), NULL (Error)
+* *_strdup - copies the string given as parameter
+* @str: string to duplicate
+* Return: pointer to the copied string (Success), NULL (Error)
 */
 
-char *create_array(unsigned int size, char c)
+char *_strdup(char *str)
 {
-char *p;
-unsigned int i = 0;
+char *dup;
+unsigned int i, len;
 
-if (size == 0)
+i = 0;
+len = 0;
+if (str == NULL)
 return (NULL);
-p = (char *) malloc(sizeof(char) * size);
-if (p == NULL)
-return (0);
-while (i < size)
-{
-*(p + i) = c;
+while (str[len])
+len++;
+dup = malloc(sizeof(char) * (len + 1));
+if (dup == NULL)
+return (NULL);
+while ((dup[i] = str[i]) != '\0')
 i++;
-}
-*(p + i) = '\0';
-return (p);
+return (dup);
 }
